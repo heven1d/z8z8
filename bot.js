@@ -36,6 +36,7 @@ message.channel.send(`** ${args}**`); // محطوط # عشان محد يستخد
 }
 });
 
+const prefix = '!';
 
 client.on('message', async msg => { // eslint-disable-line
     if (msg.author.bot) return undefined;
