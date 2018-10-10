@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = '!';
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -36,7 +37,6 @@ message.channel.send(`** ${args}**`); // محطوط # عشان محد يستخد
 }
 });
 
-const prefix = '!';
 
 client.on('message', async msg => { // eslint-disable-line
     if (msg.author.bot) return undefined;
