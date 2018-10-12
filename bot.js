@@ -4,9 +4,9 @@ const devs = ["460606140666085378"];
 const adminprefix = ["-"];
 var prefix = "!";  
 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
+//client.on('ready', () => {
+  //console.log(`Logged in as ${client.user.tag}!`);
+//client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
