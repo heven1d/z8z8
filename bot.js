@@ -29,28 +29,75 @@ client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
 
 
 
-client.on('message' , message => {
-  if(message.content.startsWith('-Voice')){
-         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-        message.guild.createChannel('Voice Area', 'category').then(cg => {
-        message.guild.createChannel('Relax', 'voice').then(cha => {
-        message.guild.createChannel('Coffe', 'voice').then(a7aa => {
-        message.guild.createChannel('Cronner', 'voice').then(a7aaa=> {
-        message.guild.createChannel('Music', 'voice').then(a7aaaa => {
-            cha.setParent(cg)
-            a7aa.setParent(cg)
-            a7aaa.setParent(cg)
-            a7aaaa.setParent(cg)
+client.on('message', message => {
+    var prefix = "!";         //<=== هنا تقدر تغير البريفكس
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'clear')) {            //Codes Development .
+if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));         //Codes Development .
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);      //Codes Development .
+let request = `Requested By ${message.author.username}`;
+message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))   //Codes Development .
 
-                           message.reply('**I Make Voice Rooms **')
-        });})
-           })
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+message.channel.send(`Chat will delete`).then(m => m.delete(5000));
+var msg;
+        msg = parseInt();
+
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "`` Chat Deleted ``",
+        color: 0x06DF00,
+        footer: {          //Codes Development .
+
+        }           //Codes Development .
+      }}).then(msg => {msg.delete(3000)});
+
+})     //Codes Development .
+reaction2.on("collect", r => {   //Codes Development .
+message.channel.send(`**Chat deletion cancelled**`).then(m => m.delete(5000));
+msg.delete();
 })
 })
-
 }
-          });
+});   //Codes Development .
 
+
+client.on("message", async message => {
+        if(!message.channel.guild) return;
+        if(message.content.startsWith(prefix + 'server')) {
+        let guild = message.guild
+        let members = guild.memberCount
+        let bots = guild.members.filter(m => m.user.bot).size
+        let humans = members - bots
+        let textchannels = guild.channels.filter(e => e.type === "text")
+        let voicechannels = guild.channels.filter(e => e.type === "voice")
+          var FaReSsS = new Discord.RichEmbed()
+          .setColor("RANDOM")
+          .setTitle(`**Guild Info**`)
+          .setDescription(`${guild.name}`)
+          .addField(" 🆔   *Guild ID*  ", `${guild.id}`, true)
+          .addField(" 🏳   *Guild Region*  ", `${guild.region}`, true)
+          .addField(" 🎙   *Guild VoiceChannels*  ", `${voicechannels.size}`, true)
+          .addField(" #⃣ *  Guild TextChannels  *", `${textchannels.size}`, true)
+          .addField(" 👥  *  Guild Members Count  *", `${members}`, true)
+          .addField(" 👤   *Guild Members*  ", `${humans}`, true)
+          .addField(" 🚀   *Guild RolesCount*  ", `${guild.roles.size}`, true)
+          .addField(" 👑   *CreatedBy*  ", `${guild.owner}`, true)
+          .addField(` :watch:   *CreatedAt*   ` , `${guild.createdAt}` , true)
+      
+       message.channel.send(FaReSsS);
+     // C O D E S & B Y F A R E S
+      }
+    });
 
 
 client.on('message', message => {
