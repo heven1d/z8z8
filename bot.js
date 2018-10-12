@@ -31,6 +31,13 @@ client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
 });
 
 
+
+client.on('guildMemberAdd', (member) => {
+member.addRole(member.guild.roles.find('name', 'Member'));
+});
+
+
+
 client.on('message', message => {
     var prefix = "!";         //<=== هنا تقدر تغير البريفكس
    if(!message.channel.guild) return;
