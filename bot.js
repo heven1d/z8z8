@@ -27,6 +27,32 @@ client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
   console.log('')
 });
 
+
+
+client.on('message' , message => {
+  if(message.content.startsWith('-Voice')){
+         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+        message.guild.createChannel('Voice Area', 'category').then(cg => {
+        message.guild.createChannel('Relax', 'voice').then(cha => {
+        message.guild.createChannel('Coffe', 'voice').then(a7aa => {
+        message.guild.createChannel('Cronner', 'voice').then(a7aaa=> {
+        message.guild.createChannel('Music', 'voice').then(a7aaaa => {
+            cha.setParent(cg)
+            a7aa.setParent(cg)
+            a7aaa.setParent(cg)
+            a7aaaa.setParent(cg)
+
+                           message.reply('**I Make Voice Rooms **')
+        });})
+           })
+})
+})
+
+}
+          });
+
+
+
 client.on('message', message => {
      if (message.content === "باي") {
 message.channel.sendMessage("" + " :rose:باي");
