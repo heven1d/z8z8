@@ -139,29 +139,10 @@ message.author.send(`**مدة الرابط : يـوم
 
 
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'welcome');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return;
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField('🎽 | name :  ',`${member}`)
-        .addField('📢 | اطلق من دخل' , `Welcome to the server, ${member}`)
-        .addField('🆔 | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                     
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter(`${member.guild.name}`)
-        .setTimestamp()
-   
-      channel.sendEmbed(embed);
-    });
-    
-    client.on('guildMemberRemove', member => {
+
+
+
+client.on('guildMemberRemove', member => {
         var embed = new Discord.RichEmbed()
         .setAuthor(member.user.username, member.user.avatarURL)
         .setThumbnail(member.user.avatarURL)
@@ -175,37 +156,7 @@ client.on('guildMemberAdd', member => {
     if (!channel) return;
     channel.send({embed : embed});
 	    
-	   
-	    
 
-client.on('message', message => {
-var prefix = "!";
-       if(message.content === prefix + "قفل") {
-                           if(!message.channel.guild) return message.reply('** This command only for servers**');
-
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
-              message.channel.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: false
-
-              }).then(() => {
-                  message.reply("**__تم تقفيل الشات__ ✅ **")
-              });
-                }
-
-    if(message.content === prefix + "فتح") {
-                        if(!message.channel.guild) return message.reply('** This command only for servers**');
-
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
-              message.channel.overwritePermissions(message.guild.id, {
-            SEND_MESSAGES: true
-                
-              }).then(() => {
-                  message.reply("**__تم فتح الشات__✅**")
-              });
-    }
-       
-});	    
-	    
 	    
 	  
 
