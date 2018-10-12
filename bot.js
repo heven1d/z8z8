@@ -72,6 +72,7 @@ msg.delete();
 
 
 client.on("message", async message => {
+    var prefix = "!";  
         if(!message.channel.guild) return;
         if(message.content.startsWith(prefix + 'server')) {
         let guild = message.guild
