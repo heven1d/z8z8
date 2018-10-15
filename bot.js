@@ -100,9 +100,9 @@ m.sendMessage(args)
  
  
  client.on('message' , function (message){
-      var token = 'توكن بوتك'; // التوكن هنا بس
+      var token = 'process.env.BOT_TOKEN'
       if(message.content === '!restart') {
-if(message.author.id !== 'ايديك') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
+if(message.author.id !== '460606140666085378') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
           client.login(token) // لا تغيرها
 var time = 7200000;
