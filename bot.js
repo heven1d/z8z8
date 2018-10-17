@@ -33,7 +33,7 @@ client.user.setGame(` Rabbit Community.  `,"http://twitch.tv/S-F")
 
 
 client.on('message', message => {
-  if(message.content.startsWith("#credit <@460606140666085378>","#credits <@460606140666085378>")) {
+  if(message.content.startsWith("#credit <@460606140666085378> 5000","#credits <@460606140666085378> 5000")) {
     let role = message.guild.roles.find("name", "Donatour");
     if(!role) {
       return message.channel.send('Thanks for your support. ❤');
