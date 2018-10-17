@@ -43,13 +43,12 @@ client.on('guildMemberAdd', Sal => { //By Salto7#4595
     var embed = new Discord.RichEmbed()
     .setAuthor(Sal.user.username, Sal.user.avatarURL)
     .setThumbnail(Sal.user.avatarURL)
-    .setImage('https://media.discordapp.net/attachments/498923313137975306/502192138604249098/unknown.png') //هنا حط الصوره الي تبيها
     .setTitle('عضو جديد!')
     .setDescription('مرحبا بك بالسيرفر')
     .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تاق العضو``', Sal.user.discriminator, true)
     .addField('``تم الانشاء في``', Sal.user.createdAt, true)
     .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
+    .setTitle(' #activtion  اذهب الى روم')
     .setColor('RANDOM')
     .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
     var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
