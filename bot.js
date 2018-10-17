@@ -49,14 +49,6 @@ client.on('message', message => {
 
 
 
-for( i=0; i < 1<<24; i++) {
-            r = (i>>16) & 0xff;
-            g = (i>>8) & 0xff;
-            b = i & 0xff;
-            console.log( "rgb("+r+","+g+","+b+")")
-        }
-
-
 
 client.on('message' , message => {
   if(message.content.startsWith('1backup')){
