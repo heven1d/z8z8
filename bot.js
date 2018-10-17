@@ -218,82 +218,44 @@ client.on('message', message => {
 });
 
 
-client.on('message', message => {
-
-              if(!message.channel.guild) return;
-
-    var prefix = "!";
-
-    if(message.content.startsWith('!bc')) {
-
-    if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-
-  if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-
-    let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+  client.on('message', message => {
+    if (message.content.split(' ')[0] == '!bc')
+       message.guild.members.forEach( member => {
+         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 
 
-    let request = `Requested By ${message.author.username}`;
+           member.send( ` ${member} ` + "**" + "  ** " + message.content.substr(3));
+                                                      message.delete();
+            
+                                                    });
+            
+                                                  });
+   client.on("message", message => {
+       var prefix = "!";
+ 
+             var args = message.content.substring(prefix.length).split(" ");
+                if (message.content.startsWith(prefix + "bc")) {
+                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 
-    if (!args) return message.reply('**اكتب شي لي ارسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
+                          if (!args[1]) {
+                            
+                                 let embed3 = new Discord.RichEmbed()
+                                     .setDescription(":white_check_mark: | تم ارسال رسالة لا يوجد فيها شيء")
+                                       .setColor("#FF00FF")
+                                          message.channel.sendEmbed(embed3);
+                            
+                                        } else {
 
-    msg.react('✅')
-
-    .then(() => msg.react('❌'))
-
-    .then(() =>msg.react('✅'))
-
-    let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-
-    let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-
-       let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-
-    let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-
-    reaction1.on("collect", r => {
-
-    message.channel.send(`☑ | Done ... The Broadcast Message Has Been Sent For ${message.guild.members.size} Members`).then(m => m.delete(5000));
-
-    message.guild.members.forEach(m => {
-
-    var bc = new
-
-       Discord.RichEmbed()
-
-       .setColor('RANDOM')
-
-         .setTitle('لي دخول السيرفر اضغط هنا')
-       
-       .setURL('رابط سيرفرك')
-
-       .addField('Server', message.guild.name)
-
-       .addField('Sender', message.author.username)
-
-       .addField('Message', args)
-
-    m.send({ embed: bc })
-
-    msg.delete();
-
-    })
-
-    })
-
-    reaction2.on("collect", r => {
-
-    message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-
-    msg.delete();
-
-    })
-
-    })
-
-    }
-
-    });
+                            
+                                           let embed4 = new Discord.RichEmbed()
+                                                            .setDescription(':white_check_mark: | تم ارسال الرساله للجميع ..')
+                                                                .setColor("#99999")
+                               
+                                                                message.channel.sendEmbed(embed4);
+                                                      message.delete();
+                            }
+                          }
+});
 
 
 client.on('message', message => {
