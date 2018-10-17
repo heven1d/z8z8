@@ -55,6 +55,25 @@ member.addRole(member.guild.roles.find('name', 'Member'));
 
 
 
+const bannedwords = [
+    "كل زق",
+    "كسمك",
+    "كس امك",
+    "قحبة",
+    "قحبه",
+    "شرموطه"
+
+  ];
+
+client.on('message',  message => {
+  if(bannedwords.some(word => message.content.includes(word))) {
+    message.delete()
+    message.reply(" احترم نفسك , يمنع الشتم في خادمنا او سوف تتعرض الي  ميوت ").then(msg => {msg.delete(5000)});;
+  };
+});
+
+
+
 
 client.on('guildMemberAdd', Sal => { //By Salto7#4595
     var embed = new Discord.RichEmbed()
