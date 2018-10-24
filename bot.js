@@ -76,15 +76,17 @@ client.on('message' , message => {
 client.on('message' , message => {
   if(message.content.startsWith('2backup')){
          if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-        message.guild.createChannel('Text Area', 'category').then(cg => {
-        message.guild.createChannel('Relax', 'chat').then(cha => {
+        message.guild.createChannel('Voice Area', 'category').then(cg => {
+        message.guild.createChannel('Alone', 'chat').then(cha => {
         message.guild.createChannel('Coffe', 'voice').then(a7aa => {
         message.guild.createChannel('Cronner', 'voice').then(a7aaa=> {
         message.guild.createChannel('Music', 'voice').then(a7aaaa => {
+        message.guild.createChannel('Relax', 'voice').then(a7aaaaa => {
             cha.setParent(cg)
             a7aa.setParent(cg)
             a7aaa.setParent(cg)
             a7aaaa.setParent(cg)
+	    a7aaaaa.setParent(cg)
 
                            message.reply('**I Make Voice Rooms **')
         });})
@@ -98,7 +100,7 @@ client.on('message' , message => {
 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'Member'));
+member.addRole(member.guild.roles.find('name', '.Rabbit'));
 });
 
 
@@ -116,7 +118,7 @@ const bannedwords = [
 client.on('message',  message => {
   if(bannedwords.some(word => message.content.includes(word))) {
     message.delete()
-    message.reply(" احترم نفسك , يمنع الشتم في خادمنا او سوف تتعرض الي  ميوت ").then(msg => {msg.delete(5000)});;
+    message.reply(" احترم نفسك , يمنع الشتم  او سوف تتعرض الي  ميوت ").then(msg => {msg.delete(5000)});;
   };
 });
 
