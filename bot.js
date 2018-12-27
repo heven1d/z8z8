@@ -55,7 +55,6 @@ client.on("message", message => {
 ❖ ^avatar ➾ شعار حسابك
 ❖ ^image  ➾ شعار السيرفر
 ❖ ^stats ➾ معلومات عن البوت سرعة البوت والخادم ايضا
-❖ ^ping ➾ عرض سرعه اتصال البوت
 ❖ ^bot ➾ معلومات البوت
 ❖ ^server ➾ معلومات السيرفر
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
@@ -88,20 +87,6 @@ client.on('message', message => {
             .addField('``Name Bot Or tag``' , `${client.user.tag}` , true)
             .addField('``Bot Id``' , `${client.user.id}` , true)
             .setFooter('Touch Bot.')
-
-
-
-client.on('message', message => {
-     if (message.content === "^ping") {
-      const embed = new Discord.RichEmbed()
-
-  .setColor("RANDOM")
-  .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
-                 .setFooter(` Touch Bot.`)
-
-  message.channel.sendEmbed(embed);
-    }
-});
 
 
 
