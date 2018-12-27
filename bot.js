@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const devs = ["460606140666085378"];
+const devs = ["460606140666085378" , "284005623895425024"];
 const adminprefix = ["-"];
 var prefix = "^";  
 
