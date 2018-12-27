@@ -76,23 +76,50 @@ message.author.sendEmbed(embed)
 });
 
 
+client.on('message', message => {
+     if (message.content === "^ping") {
+      const embed = new Discord.RichEmbed()
+
+  .setColor("RANDOM")
+  .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
+                 .setFooter(` ts  Bot
+ .`, 'https://a.top4top.net/p_829o87y51.png')
+
+  message.channel.sendEmbed(embed);
+    }
+});
 
 
 
 client.on('message', message => {
-  if(message.content.startsWith("#credit <@460606140666085378> 5000","#credits <@460606140666085378> 5000")) {
-    let role = message.guild.roles.find("name", "Donatour");
-    if(!role) {
-      return message.channel.send('Thanks for your support. ❤');
-    }
-      message.member.addRole(role);
-      let embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .setAuthor("Thanks for you support you have given the Donatour role.");
+    if (message.content == '^server') {
+        var servername = message.guild.name
+        var اونر = message.guild.owner
+        var اعضاء = message.guild.memberCount
+        var ايدي = message.guild.id
+        var بلدالسيرفر = message.guild.region
+        var الرومات = message.guild.channels.size
+        var الرتب = message.guild.roles
+        var عمل = message.guild.createdAt
+        var الروم = message.guild.defaultChannel
+        var server = new Discord.RichEmbed()
+            .setAuthor(message.author.username, message.author.avatarURL)
+            .setThumbnail(message.guild.iconURL)
+            .addField('اسم السيرفر', servername)
+            .addField('اي دي السيرفر ', [ايدي])
+            .addField('أعضاء السيرفر', اعضاء)
+            .addField('رومات السيرفر', الرومات)
+            .addField('روم الشات الأساسي', الروم)
+            .addField('صاحب السيرفر', اونر)
+            .addField('بلد السيرفر', بلدالسيرفر)
+            .addField('تاريخ افتتاح السيرفر', عمل)
+            .setColor('RANDOM')
 
-        message.author.sendEmbed(embed);
-  }
+        message.channel.sendEmbed(server)
+    }
+
 });
+
 
 
 
@@ -234,49 +261,58 @@ msg.delete();
 });   //Codes Development .
 
 
-client.on('message', function(message) {
-    if(message.content.startsWith (prefix  + 'server')) {
-          let guild = message.guild;
-  let icon = message.guild.iconURL;
-  let createdAtRaw = guild.createdAt.toDateString();
-  let createdAt = createdAtRaw.split(" ");
-  let bots = message.guild.members.filter(m => m.user.bot).size;
-  let humans = message.guild.members.filter(m => !m.user.bot).size;
-  let channels = message.guild.channels.size;
-  let textChannels = message.guild.channels.filter(m => m.type == "text").size;
-  let voiceChannels = message.guild.channels.filter(i => i.type == "voice").size;
-  let emojis = [];
-  guild.emojis.forEach(emoji => {
-  emojis.push(`\`${emoji}\``);
-  });
-  emojis.length === 0 ? emojis = "None" : emojis = emojis.join(", ");
 
-  let roles = [];
-  guild.roles.forEach(role => {
-    roles.push(`\`${role.name}\``);
-  });
-  roles = roles.join(", ");
 
-  let embed = new Discord.RichEmbed()
-  .setTitle(`Server Stats`)
-  .setThumbnail(icon)
-  .addField('Guild Name', guild.name, true)
-  .addField('Guild ID', guild.id, true)
-  .addField('Guild Owner', `${guild.owner.user.tag}`, true)
-  .addField('Created At', `${createdAt[0]} ${createdAt[2]} ${createdAt[1]} ${createdAt[3]}`, true)
-  .addField('Region', guild.region.toUpperCase(), true)
-  .addField('Total Members:', guild.memberCount, true)
-  .addField('Bots:', bots, true)
-  .addField('Users:', humans, true)
-  .addField('Verification Level', guild.verificationLevel, true)
-  .addField('Text Channels', textChannels, true)
-  .addField('Voice Channels', voiceChannels, true)
-  .addField(`Roles`, `${guild.roles.size}`, true)
-  .addField(`Emojis`, `${guild.emojis.size}`, true)
+client.on('message', message => {
+    if (message.content.startsWith("^avatar")) {
+        var mentionned = message.mentions.users.first();
+    var x5bzm;
+      if(mentionned){
+          var x5bzm = mentionned;
+      } else {
+          var x5bzm = message.author;
 
-      message.channel.send({embed:embed});
+      }
+        const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setImage(`${x5bzm.avatarURL}`)
+      message.channel.sendEmbed(embed);
     }
-  });
+});
+
+
+
+client.on('message', message => {
+if (message.content.startsWith(prefix + "^servers")) {
+         if(!message.author.id === '285236833804222464') return;
+var gimg;
+var gname;
+var gmemb;
+var gbots;
+var groles;
+var servers = client.guilds;
+servers.forEach((g)=>{
+gname = g.name;
+gimg = g.iconURL;
+gmemb = g.members.size;
+gbots = g.members.filter(m=>m.bot).size;
+groles = g.roles.map(r=> {return r.name});
+let serv = new Discord.RichEmbed()
+.setAuthor(gname,gimg)
+.setThumbnail(gimg)
+.addField('Server bots',gbots)
+.addField('Server Member Count',gmemb = g.members.size)
+.setColor('RANDOM')
+message.channel.send(`
+Server Name : **${gname}**
+Server MemberCount : **${gmemb} **
+        `);
+      message.channel.sendEmbed(serv);
+})
+}
+});
+
+
 
 
 client.on('message', message => {
