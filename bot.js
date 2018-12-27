@@ -2,11 +2,11 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const devs = ["460606140666085378"];
 const adminprefix = ["-"];
-var prefix = "!";  
+var prefix = "^";  
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`!help | for help`) //"http://twitch.tv/S-F"
+client.user.setGame(`^help | for help`) //"http://twitch.tv/S-F"
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -29,6 +29,53 @@ client.user.setGame(`!help | for help`) //"http://twitch.tv/S-F"
   console.log('')
   console.log('')
 });
+
+
+client.on("message", message => {
+     if (message.content === "^help") {
+         message.react('👌')
+         if(!message.channel.guild) return message.reply('** This command only for servers **');
+        message.reply("** تم الإرسال في الخاص :heavy_check_mark: **")
+     }
+});
+
+client.on("message", message => {
+ if (message.content === "^help") {
+  const embed = new Discord.RichEmbed()
+      .setColor("#ffff00")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+ **
+ـــــــــــــــــــــــــ
+                  Prefix = ' ^ '
+ـــــــــــــــــــــــــ
+ـــــــــــــــــــــــــ
+                    اوامر عامة
+ـــــــــــــــــــــــــ
+❖ ^members ➾ معلومات الاعضاء
+❖ ^avatar ➾ شعار حسابك
+❖ ^image  ➾ شعار السيرفر
+❖ ^stats ➾ معلومات عن البوت سرعة البوت والخادم ايضا
+❖ ^id ➾ اي دي
+❖ ^Date ➾ التاريخ
+❖ ^ping ➾ عرض سرعه اتصال البوت
+❖ ^bot ➾ معلومات البوت
+❖ ^server ➾ معلومات السيرفر
+❖ ^hphoto ➾ اذا ترد صورة من فريق الدعم لى سيرفر/أليك/الصديقكا
+❖ ^hintro ➾ اذا تريد انترو لي قناتك اليوتيوب
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
+bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=527882395664252959&permissions=8&scope=bot
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
+**
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+});
+
+
 
 
 
@@ -146,7 +193,7 @@ client.on('guildMemberAdd', Sal => { //By Salto7#4595
 
 
 client.on('message', message => {
-    var prefix = "!";         //<=== هنا تقدر تغير البريفكس
+    var prefix = "^";         //<=== هنا تقدر تغير البريفكس
    if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'clear')) {            //Codes Development .
 if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));         //Codes Development .
@@ -404,7 +451,7 @@ client.on('message', message => {
 
 
   client.on('message', message => {
-    if (message.content.split(' ')[0] == '!bc')
+    if (message.content.split(' ')[0] == '^bc')
        message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 
@@ -416,7 +463,7 @@ client.on('message', message => {
             
                                                   });
    client.on("message", message => {
-       var prefix = "!";
+       var prefix = "^";
  
              var args = message.content.substring(prefix.length).split(" ");
                 if (message.content.startsWith(prefix + "bc")) {
