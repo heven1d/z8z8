@@ -71,7 +71,6 @@ message.author.sendEmbed(embed)
 
 
 
-
 client.on('message', message => {
     if (message.content.startsWith("^stats")) {
     message.channel.send({
@@ -86,9 +85,9 @@ client.on('message', message => {
             .addField('``Users rout``' ,`${client.users.size}` , true)
             .addField('``Name Bot Or tag``' , `${client.user.tag}` , true)
             .addField('``Bot Id``' , `${client.user.id}` , true)
-            .setFooter('Touch Bot.')
-    }
-
+            .setFooter('! ts Team')
+    })
+}
 });
 
 
