@@ -91,15 +91,13 @@ client.on('message', message => {
 
 
 
-
 client.on('message', message => {
      if (message.content === "^ping") {
       const embed = new Discord.RichEmbed()
 
   .setColor("RANDOM")
   .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
-                 .setFooter(` Touch Bot.
- .`, 'https://cdn.discordapp.com/avatars/527882395664252959/ffc2c92f3fba9a45413bca63e6417b42.jpg?size=128')
+                 .setFooter(` Touch Bot.`)
 
   message.channel.sendEmbed(embed);
     }
