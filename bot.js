@@ -46,26 +46,21 @@ client.on("message", message => {
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
  **
-ـــــــــــــــــــــــــ
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
                   Prefix = ' ^ '
-ـــــــــــــــــــــــــ
-ـــــــــــــــــــــــــ
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
                     اوامر عامة
-ـــــــــــــــــــــــــ
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
 ❖ ^members ➾ معلومات الاعضاء
 ❖ ^avatar ➾ شعار حسابك
 ❖ ^image  ➾ شعار السيرفر
 ❖ ^stats ➾ معلومات عن البوت سرعة البوت والخادم ايضا
-❖ ^id ➾ اي دي
-❖ ^Date ➾ التاريخ
 ❖ ^ping ➾ عرض سرعه اتصال البوت
 ❖ ^bot ➾ معلومات البوت
 ❖ ^server ➾ معلومات السيرفر
-❖ ^hphoto ➾ اذا ترد صورة من فريق الدعم لى سيرفر/أليك/الصديقكا
-❖ ^hintro ➾ اذا تريد انترو لي قناتك اليوتيوب
-ــــــــــــــــــــــــــــــــــــــــــــــــــ
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=527882395664252959&permissions=8&scope=bot
-ــــــــــــــــــــــــــــــــــــــــــــــــــ
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 **
 `)
 
@@ -76,14 +71,35 @@ message.author.sendEmbed(embed)
 });
 
 
+
+
+client.on('message', message => {
+    if (message.content.startsWith("^stats")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setColor('RANDOM')
+            .setTitle('Stats Bot / Info ')
+            .addField('``Uptime``', timeCon(process.uptime()), true)
+            .addField('``Ping Is``' , `${Date.now() - message.createdTimestamp}` + '``Ms``', true)
+            .addField('``RAM Usage``', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
+            .addField('``Guild Count``', client.guilds.size, true)
+            .addField('``Bot In channel``' , `${client.channels.size}` , true)
+            .addField('``Users rout``' ,`${client.users.size}` , true)
+            .addField('``Name Bot Or tag``' , `${client.user.tag}` , true)
+            .addField('``Bot Id``' , `${client.user.id}` , true)
+            .setFooter('Touch Bot.')
+
+
+
+
 client.on('message', message => {
      if (message.content === "^ping") {
       const embed = new Discord.RichEmbed()
 
   .setColor("RANDOM")
   .addField('``سرعة أتصال الــبوت`` ' , `${Date.now() - message.createdTimestamp}` + ' ms`')
-                 .setFooter(` ts  Bot
- .`, 'https://a.top4top.net/p_829o87y51.png')
+                 .setFooter(` Touch Bot.
+ .`, 'https://cdn.discordapp.com/avatars/527882395664252959/ffc2c92f3fba9a45413bca63e6417b42.jpg?size=128')
 
   message.channel.sendEmbed(embed);
     }
@@ -198,21 +214,26 @@ client.on('message',  message => {
 
 
 
-client.on('guildMemberAdd', Sal => { //By Salto7#4595
-    var embed = new Discord.RichEmbed()
-    .setAuthor(Sal.user.username, Sal.user.avatarURL)
-    .setThumbnail(Sal.user.avatarURL)
-    .setTitle('عضو جديد!')
-    .setDescription('مرحبا بك بالسيرفر')
-    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
-    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
-    .setTitle(' #activtion  اذهب الى روم')
-    .setColor('RANDOM')
-    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('name', 'welcome') // هنا حط اسم الروم الي تبيه يكتب فيه
-    if (!channel) return;
-    channel.send({embed : embed});
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'chat');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
+        .addField(':loudspeaker: | اطلق من دخل' , `Welcome to the server, ${member}`)
+        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
+
+     .setFooter(`${member.guild.name}`)
+        .setTimestamp()
+
+      channel.sendEmbed(embed);
     });
 
 
@@ -281,37 +302,37 @@ client.on('message', message => {
 });
 
 
-
 client.on('message', message => {
-if (message.content.startsWith(prefix + "^servers")) {
-         if(!message.author.id === '285236833804222464') return;
-var gimg;
-var gname;
-var gmemb;
-var gbots;
-var groles;
-var servers = client.guilds;
-servers.forEach((g)=>{
-gname = g.name;
-gimg = g.iconURL;
-gmemb = g.members.size;
-gbots = g.members.filter(m=>m.bot).size;
-groles = g.roles.map(r=> {return r.name});
-let serv = new Discord.RichEmbed()
-.setAuthor(gname,gimg)
-.setThumbnail(gimg)
-.addField('Server bots',gbots)
-.addField('Server Member Count',gmemb = g.members.size)
-.setColor('RANDOM')
-message.channel.send(`
-Server Name : **${gname}**
-Server MemberCount : **${gmemb} **
-        `);
-      message.channel.sendEmbed(serv);
-})
-}
+     if (message.content === "^bot") {
+            if(!message.channel.guild) return message.reply('** This command only for servers **');
+     let embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
+  .addField("**المستخدمين:**", client.users.size)
+  .addField("**قنوات:**", client.channels.size)
+  .addField("**")
+  .setTimestamp()
+message.channel.sendEmbed(embed);
+    }
 });
 
+
+
+
+client.on('message', message => {
+    if(message.content == '^members') {
+       message.react(":white_check_mark:")
+    const embed = new Discord.RichEmbed()
+    .setDescription(`**Members info🔋
+:green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
+:heart:dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
+:yellow_heart: idle:      ${message.guild.members.filter(m=>m.presence.status == 'idle').size}
+:black_heart: offline:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
+:blue_heart:   all:  ${message.guild.memberCount}**`)
+         message.channel.send({embed});
+
+    }
+  });
 
 
 
@@ -396,31 +417,25 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
- 
-  message.channel.createInvite({
+        message.channel.createInvite({
         thing: true,
-        maxUses: 100,
-        maxAge: 86400
+        maxUses: 20,
+        maxAge: 86400,
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
     const embed = new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription("| :white_check_mark:   تم ارسال الرابط على الخاص  ")
+          .setDescription(" تم أرسال الرابط برسالة خاصة ")
+           .setAuthor(client.user.username, client.user.avatarURL)
+                 .setAuthor(client.user.username, client.user.avatarURL)
+                .setFooter('طلب بواسطة: ' + message.author.tag)
+
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
               const Embed11 = new Discord.RichEmbed()
         .setColor("RANDOM")
-                .setAuthor(message.guild.name, message.guild.iconURL)
-        .setDescription(`
-**
----------------------
--[${message.guild.name}]  هذا هو رابط سيرفر
----------------------
--هذا الرابط صالح ل 100 مستخدم فقط
----------------------
--هذا الرابط صالح لمده 24 ساعه فقط
----------------------
-**`)
+
+    .setDescription(" مدة الرابط : يوم | عدد استخدامات الرابط : 20 ")
       message.author.sendEmbed(Embed11)
     }
 });
@@ -429,13 +444,6 @@ client.on('message', message => {
 client.on('message', message => {
      if (message.content === "باي") {
 message.channel.sendMessage("" + " :rose:باي");
-    }
-}); 
-
-
-client.on('message', message => {
-     if (message.content === "spam?") {
-message.channel.sendMessage("يلا");
     }
 }); 
 
@@ -453,11 +461,6 @@ message.channel.sendMessage("" + "هايي");
     }
 }); 
 
-client.on('message', message => {
-     if (message.content === "-help") {
-message.channel.sendMessage("" + "1 - نظام الرد التلقائـي العربي :robot:                                                                                                                                                                       4 - **(-bc <message>)** BCخاصية الـ                                                                                                      ");
-    }
-});
 
 
 client.on('message', message => {
