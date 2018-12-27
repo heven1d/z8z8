@@ -87,7 +87,6 @@ client.on('message', message => {
             .addField('``Bot Id``' , `${client.user.id}` , true)
             .setFooter('! ts Team')
     })
-}
 });
 
 
