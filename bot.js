@@ -125,6 +125,17 @@ message.author.sendEmbed(embed)
 
 
 
+client.on("ready", () => {
+  function lol() {
+    client.guilds.get('539870654816583680').roles.find("name", "*").setColor("RANDOM");
+  };
+  setInterval(lol, 1600);
+});
+
+
+
+
+
 
 client.on("message", message => {
  if (message.content === "^invite") {
@@ -591,6 +602,16 @@ message.channel.sendMessage("" + "هايي");
 
 
 client.on('message', message => {
+     if (message.content === "^invite") {
+message.channel.sendMessage(":heart_exclamation:  تم الإرسال فـ الخاًص");
+    }
+}); 
+
+
+
+
+
+client.on('message', message => {
      if (message.content === "هلوو") {
 message.channel.sendEmbed("tt" + ":heart: هلوو");
     }
@@ -611,7 +632,7 @@ message.channel.sendMessage("" + "وعليكم السلام");
 
 
 client.on('message', message => {
-	 if (message.content === "^ticket") {
+	 if (message.content === "^ping") {
 	  const embed = new Discord.RichEmbed ()
   
   .setColor("#FF0000")
