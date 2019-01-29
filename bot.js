@@ -90,6 +90,7 @@ client.on("message", message => {
 ❖ ^ping ➾ معـرفة سرعـة البـوت
 ❖ ^server ➾ معلومات السيرفر
 ❖ ^new (Subject) ➾ لفتح تـذكـرة
+❖ ^close ➾ لإغـلاق تـذكـرة
 
 
 
@@ -100,13 +101,7 @@ client.on("message", message => {
 أمر التذكره لها قوانين يرجى كتابة       ^ticket
 
 
-
-
-
-    اما غيرها لا  Members اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة
-
-
-
+    اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة Members
 
 
      Welcome اذا اردت البوت بأن يقوم بالترحيب اصنع روم بأسم
@@ -127,13 +122,13 @@ message.author.sendEmbed(embed)
 
 client.on("ready", () => {
   function lol() {
-    client.guilds.get('539870654816583680').roles.find("name", "*").setColor("RANDOM");
+    client.roles.find("name", "rainbow").setColor("RANDOM");
   };
   setInterval(lol, 1600);
 });
 
 
-
+// guilds.get('539870654816583680').
 
 
 
