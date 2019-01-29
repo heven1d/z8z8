@@ -150,7 +150,7 @@ client.on("ready", () => { // كود رينبو
   function lol() {
     client.guilds.get('539870654816583680').roles.find("name", "*").setColor("RANDOM");
   };
-  setInterval(lol, 500);
+  setInterval(lol, 50);
 });
 
 
