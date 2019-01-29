@@ -97,17 +97,23 @@ client.on("message", message => {
 
 
 
-أمر التذكره لها قوانين يرجى كتابة 1      ^ticket
+أمر التذكره لها قوانين يرجى كتابة       ^ticket
 
 
-2    اما غيرها لا  Members اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة
-
-3     Welcome اذا اردت البوت بأن يقوم بالترحيب اصنع روم بأسم
 
 
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=539862959870967808&permissions=0&scope=bot
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+    اما غيرها لا  Members اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة
+
+
+
+
+
+     Welcome اذا اردت البوت بأن يقوم بالترحيب اصنع روم بأسم
+
+
+
+ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 **
 `)
 
@@ -116,6 +122,33 @@ message.author.sendEmbed(embed)
 
 }
 });
+
+
+
+
+client.on("message", message => {
+ if (message.content === "^invite") {
+  const embed = new Discord.RichEmbed()
+      .setColor("#ff0000")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+ **
+https://discordapp.com/api/oauth2/authorize?client_id=539862959870967808&permissions=0&scope=bot
+**
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+});
+
+
+
+
+
+
+
 
 
 
