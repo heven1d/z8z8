@@ -71,7 +71,7 @@ client.on("message", message => {
 client.on("message", message => {
  if (message.content === "^help") {
   const embed = new Discord.RichEmbed()
-      .setColor("#ffff00")
+      .setColor("$ff0000")
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
  **
@@ -84,9 +84,10 @@ client.on("message", message => {
 ❖ ^members ➾ معلومات الاعضاء
 ❖ ^avatar ➾ شعار حسابك
 ❖ ^bot ➾ معلومات البوت
+❖ ^clear ➾ مسـح الشـات
 ❖ ^server ➾ معلومات السيرفر
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
-bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=527882395664252959&permissions=8&scope=bot
+bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=539862959870967808&permissions=0&scope=bot
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 **
 `)
@@ -106,7 +107,7 @@ message.author.sendEmbed(embed)
 
 
 client.on('message' , message => {
-  if(message.content.startsWith('1backup')){
+  if(message.content.startsWith('12backup-voice')){
          if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
         message.guild.createChannel('Voice Area', 'category').then(cg => {
         message.guild.createChannel('Relax', 'voice').then(cha => {
@@ -129,20 +130,20 @@ client.on('message' , message => {
 
 
 client.on('message' , message => {
-  if(message.content.startsWith('2backup')){
+  if(message.content.startsWith('12backup-chat')){
          if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-        message.guild.createChannel('Voice Area', 'category').then(cg => {
-        message.guild.createChannel('Relax', 'chat').then(cha => {
-        message.guild.createChannel('Coffe', 'voice').then(a7aa => {
-        message.guild.createChannel('Cronner', 'voice').then(a7aaa=> {
-        message.guild.createChannel('Music', 'voice').then(a7aaaa => {
+        message.guild.createChannel('Text Area', 'category').then(cg => {
+        message.guild.createChannel('chat', 'chat').then(cha => {
+        message.guild.createChannel('commands', 'chat').then(a7aa => {
+        message.guild.createChannel('photos', 'chat').then(a7aaa=> {
+        message.guild.createChannel('cut-tweet', 'chat').then(a7aaaa => {
 
             cha.setParent(cg)
             a7aa.setParent(cg)
             a7aaa.setParent(cg)
             a7aaaa.setParent(cg)
 
-                           message.reply('**I Make Voice Rooms **')
+                           message.reply('**I Make Text Rooms **')
         });})
            })
 })
@@ -200,8 +201,8 @@ const bannedwords = [
     "كس امك",
     "قحبة",
     "قحبه",
-    "شرموطه"
-
+    "شرموطه",
+    "كس",
   ];
 
 client.on('message',  message => {
@@ -215,7 +216,7 @@ client.on('message',  message => {
 
 
 client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'chat');
+    let channel = member.guild.channels.find('name', 'welcome');
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
