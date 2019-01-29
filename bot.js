@@ -7,6 +7,7 @@ var prefix = "^";
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`for Netflix Customers`) //    ,"http://twitch.tv/S-F"
+client.channels.get("539927972270833695").join(); 
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -149,26 +150,8 @@ client.on("ready", () => { // كود رينبو
   function lol() {
     client.guilds.get('539870654816583680').roles.find("name", "*").setColor("RANDOM");
   };
-  setInterval(lol, 1000);
+  setInterval(lol, 500);
 });
-
-
-
-
-client.on('message', msg => {
-
-    if (msg.content == '^join') {
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
-     }
-    }
-}
-})
-client.on('ready', () => {
-    client.channels.get("539927972270833695").join(); 
-    });
 
 
 
