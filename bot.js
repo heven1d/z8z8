@@ -102,7 +102,7 @@ message.author.sendEmbed(embed)
 
 client.on('message', message => {
    if(!message.channel.guild) return;
-if(message.content.startsWith('-bbc')) {
+if(message.content.startsWith('^bc')) {
 if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
 if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send(':no_entry: | You dont have **ADMINISTRATOR** Permission!' );
 let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
@@ -235,7 +235,7 @@ client.on('message', message => {
 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', '.Rabbit'));
+member.addRole(member.guild.roles.find('name', 'Members'));
 });
 
 
@@ -247,7 +247,6 @@ const bannedwords = [
     "قحبة",
     "قحبه",
     "شرموطه",
-    "كس",
   ];
 
 client.on('message',  message => {
@@ -534,45 +533,6 @@ client.on('message', message => {
     }
 });
 
-
-  client.on('message', message => {
-    if (message.content.split(' ')[0] == '^bc')
-       message.guild.members.forEach( member => {
-         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-
-
-           member.send( ` ${member} ` + "**" + "  ** " + message.content.substr(3));
-                                                      message.delete();
-            
-                                                    });
-            
-                                                  });
-   client.on("message", message => {
-       var prefix = "^";
- 
-             var args = message.content.substring(prefix.length).split(" ");
-                if (message.content.startsWith(prefix + "bc")) {
-                          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-
-                          if (!args[1]) {
-                            
-                                 let embed3 = new Discord.RichEmbed()
-                                     .setDescription(":white_check_mark: | تم ارسال رسالة لا يوجد فيها شيء")
-                                       .setColor("#FF00FF")
-                                          message.channel.sendEmbed(embed3);
-                            
-                                        } else {
-
-                            
-                                           let embed4 = new Discord.RichEmbed()
-                                                            .setDescription(':white_check_mark: | تم ارسال الرساله للجميع ..')
-                                                                .setColor("#99999")
-                               
-                                                                message.channel.sendEmbed(embed4);
-                                                      message.delete();
-                            }
-                          }
-});
 
 
 client.on('message', message => {
