@@ -175,6 +175,36 @@ client.on('message' , message => {
           });
 
 
+
+client.on('message' , message => {
+  if(message.content.startsWith('12backup-chat-info')){
+         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+        message.guild.createChannel('INFO Area', 'category').then(cg => {
+        message.guild.createChannel('news', 'chat').then(cha => {
+        message.guild.createChannel('bot-updates', 'chat').then(a7aa => {
+        message.guild.createChannel('giveaways', 'chat').then(a7aaa=> {
+        message.guild.createChannel('premium-prices', 'chat').then(a7aaaa => {
+
+            cha.setParent(cg)
+            a7aa.setParent(cg)
+            a7aaa.setParent(cg)
+            a7aaaa.setParent(cg)
+
+                           message.reply('**I Make Text Rooms **')
+        });})
+           })
+})
+})
+
+}
+          });
+
+
+
+
+
+
+
 client.on('message' , message => {
   if(message.content.startsWith('12backup-chat')){
          if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
