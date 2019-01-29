@@ -85,6 +85,7 @@ client.on("message", message => {
 ❖ ^avatar ➾ شعار حسابك
 ❖ ^bot ➾ معلومات البوت
 ❖ ^clear ➾ مسـح الشـات
+❖ ^ping ➾ معـرفة سرعـة البـوت
 ❖ ^server ➾ معلومات السيرفر
 ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 bot invite link: https://discordapp.com/api/oauth2/authorize?client_id=539862959870967808&permissions=0&scope=bot
@@ -414,7 +415,7 @@ client.on('message', message => {
                                 });
                     let embed = new Discord.RichEmbed()
                                 .setTitle('**New Ticket.**')
-                                .setColor("RANDOM")
+                                .setColor("#FF0000")
                                 .setThumbnail(`${message.author.avatarURL}`)
                                 .addField('Subject', args)
                                 .addField('Author', message.author)
@@ -430,7 +431,7 @@ client.on('message', message => {
         };  
                 let embed = new Discord.RichEmbed()
                     .setAuthor("Do you really want to close this ticket? Repeat the command to make sure. You have 20 seconds.")
-                    .setColor("RANDOM");
+                    .setColor("#FF0000");
                     message.channel.sendEmbed(embed) .then(codes => {
 
                     
@@ -470,7 +471,7 @@ client.on('message', message => {
       message.author.sendMessage(invite.url)
     )
     const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
+        .setColor("#FF0000")
           .setDescription(" تم أرسال الرابط برسالة خاصة ")
            .setAuthor(client.user.username, client.user.avatarURL)
                  .setAuthor(client.user.username, client.user.avatarURL)
@@ -478,7 +479,7 @@ client.on('message', message => {
 
       message.channel.sendEmbed(embed).then(message => {message.delete(10000)})
               const Embed11 = new Discord.RichEmbed()
-        .setColor("RANDOM")
+        .setColor("#FF0000")
 
     .setDescription(" مدة الرابط : يوم | عدد استخدامات الرابط : 20 ")
       message.author.sendEmbed(Embed11)
@@ -523,7 +524,7 @@ message.channel.sendMessage("" + "وعليكم السلام");
 
 
 client.on('message', message => {
-	 if (message.content === "wping") {
+	 if (message.content === "^ping") {
 	  const embed = new Discord.RichEmbed ()
   
   .setColor("#FF0000")
