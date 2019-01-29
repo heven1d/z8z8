@@ -596,7 +596,6 @@ client.on('message', message => {
 	  const embed = new Discord.RichEmbed ()
   
   .setColor("#FF0000")
-  .addField(````) 
   .setDescription(`
  **
                           (1)
