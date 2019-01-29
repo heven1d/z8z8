@@ -346,7 +346,7 @@ client.on('guildMemberAdd', member => {
     let memberavatar = member.user.avatarURL
       if (!channel) return;
     let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
+        .setColor('#FF0000')
         .setThumbnail(memberavatar)
         .addField(':running_shirt_with_sash: | name :  ',`${member}`)
         .addField(':loudspeaker: | اطلق من دخل' , `Welcome to the server, ${member}`)
@@ -422,7 +422,7 @@ client.on('message', message => {
 
       }
         const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
+        .setColor("#FF0000")
         .setImage(`${x5bzm.avatarURL}`)
       message.channel.sendEmbed(embed);
     }
