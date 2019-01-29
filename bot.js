@@ -71,7 +71,7 @@ client.on("message", message => {
 client.on("message", message => {
  if (message.content === "^help") {
   const embed = new Discord.RichEmbed()
-      .setColor("$ff0000")
+      .setColor("#ff0000")
       .setThumbnail(message.author.avatarURL)
       .setDescription(`
  **
