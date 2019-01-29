@@ -127,7 +127,7 @@ message.channel.send(`:ballot_box_with_check: تم ارسال الرساله ب�
 message.guild.members.forEach(m => {
 var bc = new
 Discord.RichEmbed()
-.setColor('RANDOM')
+.setColor('#FF0000')
   .setTitle('`-Broadcast-`')
 .setAuthor(`Server : ${message.guild.name}`)
 .setFooter(`Sender : ${message.author.username}`)
