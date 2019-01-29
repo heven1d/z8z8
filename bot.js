@@ -120,14 +120,6 @@ message.author.sendEmbed(embed)
 
 
 
-client.on("ready", () => {
-  function lol() {
-    client.roles.find("name", "rainbow").setColor("RANDOM");
-  };
-  setInterval(lol, 1600);
-});
-
-
 // guilds.get('539870654816583680').
 
 
