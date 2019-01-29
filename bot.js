@@ -91,14 +91,14 @@ client.on("message", message => {
 
 
 
-**             مـلاحــظــة**
+             مـلاحــظــة
 
 
 
-أمر التذكره لها قوانين يرجى كتابة **1     ** -ticket
+أمر التذكره لها قوانين يرجى كتابة 1      ^ticket
 
 
-**2     **  اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة Members اما غيرها لا
+2       اذا اردت ان يعطى لأي شخص رتبة عندما يدخل الى السيرفر يجب ان يكون اسم الرتبة Members اما غيرها لا
 
 
 
@@ -432,13 +432,13 @@ client.on('message', message => {
 client.on('message', message => {
     if(message.content.startsWith(prefix + 'new')) {
         let args = message.content.split(' ').slice(1).join(' ');
-        let support = message.guild.roles.find("name","Helpers");
+        let support = message.guild.roles.find("name","Support");
         let ticketsStation = message.guild.channels.find("name", "TICKETS");
         if(!args) {
             return message.channel.send('Please type a subject for the ticket.');
         };
                 if(!support) {
-                    return message.channel.send('**Please make sure that `Support Team` role exists and it\'s not duplicated.**');
+                    return message.channel.send('**Please make sure that `Support` role exists and it\'s not duplicated.**');
                 };
             if(!ticketsStation) {
                 message.guild.createChannel("TICKETS", "category");
@@ -563,6 +563,11 @@ message.channel.sendEmbed("tt" + ":heart: هلوو");
 }); 
 
 
+
+
+
+
+
 client.on('message', message => {
      if (message.content === "السلام " + "عليكم") {
 message.channel.sendMessage("" + "وعليكم السلام");
@@ -570,8 +575,9 @@ message.channel.sendMessage("" + "وعليكم السلام");
 });     
 
 
+
 client.on('message', message => {
-	 if (message.content === "^ping") {
+	 if (message.content === "^ticket") {
 	  const embed = new Discord.RichEmbed ()
   
   .setColor("#FF0000")
@@ -581,6 +587,27 @@ client.on('message', message => {
     }
 });
 
+
+
+
+client.on('message', message => {
+	 if (message.content === "^ticket") {
+	  const embed = new Discord.RichEmbed ()
+  
+  .setColor("#FF0000")
+  .addField(````) 
+  .setDescription(`
+ **
+
+		       يجب عليك صناعة رتبة بأسم 	
+		               	 Support  
+
+**
+`)
+
+  message.channel.sendEmbed(embed);
+    }
+});
 
 
 client.on('message', message => {
