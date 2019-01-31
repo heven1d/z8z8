@@ -63,7 +63,7 @@ if (message.content.startsWith(adminprefix + 'setT')) {
 
 client.on("message", message => {
      if (message.content === "^help") {
-         message.react('👌')
+         message.react('📩')
          if(!message.channel.guild) return message.reply('** This command only for servers **');
         message.reply("** تم الإرسال في الخاص :heavy_check_mark: **")
      }
