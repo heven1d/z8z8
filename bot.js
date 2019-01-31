@@ -77,12 +77,13 @@ client.on("message", message => {
       .setDescription(`
  **
 ــــــــــــــــــــــــــــــــــــــــــــــــــ
-
                   Prefix = ' ^ '
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
 
-ــــــــــــــــــــــــــــــــــــــــــــــــــ
-                    اوامر عامة
-ــــــــــــــــــــــــــــــــــــــــــــــــــ
+
+                ❖ اوامر عامة ❖  
+
+❖ ^notes ➾ مـلاحظات يجب قرائتـها
 ❖ ^bc ➾ إرسال رسالة للجميع
 ❖ ^members ➾ معلومات الاعضاء
 ❖ ^avatar ➾ شعار حسابك
@@ -92,11 +93,31 @@ client.on("message", message => {
 ❖ ^server ➾ معلومات السيرفر
 ❖ ^new (Subject) ➾ لفتح تـذكـرة
 ❖ ^close ➾ لإغـلاق تـذكـرة
+❖ ^roles ➾ لإظهار رتب سيرفرك
+❖ ^role ➾ لإعطاء احد رتبة 
+
+
+**
+`)
+
+
+message.author.sendEmbed(embed)
+
+}
+});
 
 
 
+
+
+client.on("message", message => {
+ if (message.content === "^notes") {
+  const embed = new Discord.RichEmbed()
+      .setColor("#ff0000")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+ **
              مـلاحــظــة
-
 
 
 أمر التذكره لها قوانين يرجى كتابة       ^ticket
@@ -107,9 +128,6 @@ client.on("message", message => {
 
      Welcome اذا اردت البوت بأن يقوم بالترحيب اصنع روم بأسم
 
-
-
-ـــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
 **
 `)
 
@@ -118,6 +136,33 @@ message.author.sendEmbed(embed)
 
 }
 });
+
+
+
+
+client.on('message', message => { 
+    var prefix = "^";
+    if (message.author.boss) return;
+    if (!message.content.startsWith(prefix)) return;
+    let command = message.content.split(" ")[0];
+    command = command.slice(prefix.length);
+    if (command == "role") {
+    if (!message.channel.guild) return;
+    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return message.reply("**:no_entry_sign:انت لا تملك صلاحيات **").then(msg => msg.delete(5000));;
+    if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("البوت لايملك صلاحيات ").then(msg => msg.delete(5000));;
+    let user = message.mentions.users.first();
+    if (message.mentions.users.size < 1) return message.reply('**ضع منشن الشخص!!**').then(msg => {msg.delete(5000)});
+    let MRole = message.content.split(" ").slice(2).join(" ");
+    if(!MRole)return message.reply("يجب عليك وضع اسم الرتبة").then(msg => {msg.delete(5000)});
+    message.guild.member(user).addRole(message.guild.roles.find("name", MRole));
+    message.reply('*** Done :white_check_mark:  ***').then(msg => {msg.delete(10000)});
+    }
+    });
+
+
+
+
+
 
 
 
@@ -141,6 +186,20 @@ client.on('message', message => {
                 .setTimestamp()
     message.channel.send(embed)      
 }})
+
+
+
+
+client.on('message', message => {
+    if (message.content === '^roles') {
+        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
+        const embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .addField('Roles:',`**[${roles}]**`)
+        message.channel.sendEmbed(embed);
+    }
+});
+
 
 
 
