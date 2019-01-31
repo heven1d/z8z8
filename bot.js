@@ -6,7 +6,7 @@ var prefix = "^";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`for Netflix Customers`) //    ,"http://twitch.tv/S-F"
+client.user.setGame(`^help | Netflix Customer`) //    ,"http://twitch.tv/S-F"
 client.channels.get("539927972270833695").join(); 
   console.log('')
   console.log('')
