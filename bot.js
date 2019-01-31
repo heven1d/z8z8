@@ -1240,14 +1240,6 @@ member.addRole(member.guild.roles.find('name', 'Members'));
 
 
 
-const bannedwords = [
-    "كل زق",
-    "كسمك",
-    "كس امك",
-    "قحبة",
-    "قحبه",
-    "شرموطه",
-  ];
 
 client2.on('message',  message => {
   if(bannedwords.some(word => message.content.includes(word))) {
