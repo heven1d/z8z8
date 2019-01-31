@@ -125,6 +125,26 @@ message.author.sendEmbed(embed)
 
 
 
+
+client.on('message', message => {
+  const port = '25565'
+  if(message.content.startsWith('^mcstats')) {
+ const args = message.content.split(" ").slice(1).join(" ")
+    if (!args) return message.channel.send("** Write Server IP . **");
+        let embed = new Discord.RichEmbed()
+        .setColor('#ff0000')
+        .setThumbnail(`https://api.minetools.eu/favicon/${args}/25565`)
+        .addField("📜 Server NIP",`${args}`,true)
+        .addField("🌐 Server Port",`${port}`)
+        .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
+        .setFooter(`McStats`)
+                .setTimestamp()
+    message.channel.send(embed)      
+}})
+
+
+
+
 client.on("message", message => {
  if (message.content === "^invite") {
   const embed = new Discord.RichEmbed()
