@@ -6,7 +6,7 @@ var prefix = "^";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`^help | Netflix Customer`) //    ,"http://twitch.tv/S-F"
+client.user.setGame(`^help`) //    ,"http://twitch.tv/S-F"
 client.channels.get("539927972270833695").join(); 
   console.log('')
   console.log('')
@@ -201,6 +201,28 @@ client.on('message', message => {
         message.channel.sendEmbed(embed);
     }
 });
+
+
+
+
+
+
+client.on("message", async message => {
+  if (message.channel.id == "540542646301753344" && !message.author.bot) {
+      message.delete();
+      var seg = new Discord.RichEmbed()
+      .setAuthor(message.author.username, message.author.avatarURL)
+      .setDescription('`' + message + '`')
+      .setColor('#00cccc')
+      .setTimestamp()
+     message.channel.sendEmbed(seg).then(function (message) {
+        message.react("505414189855277066")
+        message.react("505414170406158359")
+     });
+
+  }
+});
+
 
 
 
