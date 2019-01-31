@@ -94,7 +94,6 @@ client.on("message", message => {
 ❖ ^new (Subject) ➾ لفتح تـذكـرة
 ❖ ^close ➾ لإغـلاق تـذكـرة
 ❖ ^roles ➾ لإظهار رتب سيرفرك
-❖ ^role ➾ لإعطاء احد رتبة 
 
 
 **
