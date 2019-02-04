@@ -194,9 +194,9 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '^roles') {
-        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
+        var roles = message.guild.roles.map(roles => `${roles.name}  |  `).join(' ')
         const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
+        .setColor('#ff0000')
         .addField('Roles:',`**[${roles}]**`)
         message.channel.sendEmbed(embed);
     }
@@ -555,9 +555,11 @@ client.on('message', message => {
      let embed = new Discord.RichEmbed()
   .setColor('#ff0000')
   .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
+  .addField("** **")
   .addField("**المستخدمين:**", client.users.size)
+  .addField("** **")
   .addField("**قنوات:**", client.channels.size)
-  .addField("**")
+  .addField("** **")
   .setTimestamp()
 message.channel.sendEmbed(embed);
     }
