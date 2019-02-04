@@ -814,4 +814,49 @@ message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
 });
 
 
+client.on('message', message => {
+     if (message.content === "<@460606140666085378>") {
+message.channel.sendMessage("" + "**can i help you :hugging:?   | check your DM 📩.**");
+    }
+});  
+
+
+client.on('message', message => {
+     if (message.content === "<@460606140666085378>") {
+message.author.sendMessage("" + "This way to connect with <@460606140666085378> | send him message in Discord or INSTAGRAM : **@cvxwx**  | ");
+    }
+});  
+	
+	
+
+client.on("message", message => {
+ if (message.content === "<@539862959870967808>") {
+  const embed = new Discord.RichEmbed()
+      .setColor("#ff0000")
+      .setThumbnail(message.author.avatarURL)
+      .setDescription(`
+ **
+
+» Bot Name : <@539862959870967808>
+
+» Prefix : ^
+
+» BOT Owner : <@460606140666085378>
+
+» to invite bot type : ^invite
+
+» if you want more commands type : ^help
+
+**
+`)
+
+
+message.channel.sendEmbed(embed)
+
+}
+});
+
+
+
+
 client.login(process.env.BOT_TOKEN);
