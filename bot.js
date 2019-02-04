@@ -396,18 +396,16 @@ client.on('message', message => {
         var الرومات = message.guild.channels.size
         var الرتب = message.guild.roles
         var عمل = message.guild.createdAt
-        var الروم = message.guild.defaultChannel
         var server = new Discord.RichEmbed()
             .setAuthor(message.author.username, message.author.avatarURL)
             .setThumbnail(message.guild.iconURL)
-            .addField('اسم السيرفر', servername)
-            .addField('اي دي السيرفر ', [ايدي])
-            .addField('أعضاء السيرفر', اعضاء)
-            .addField('رومات السيرفر', الرومات)
-            .addField('روم الشات الأساسي', الروم)
-            .addField('صاحب السيرفر', اونر)
-            .addField('بلد السيرفر', بلدالسيرفر)
-            .addField('تاريخ افتتاح السيرفر', عمل)
+            .addField('Server Name :trident: ', servername)
+            .addField('Server ID :copyright:  ', [ايدي])
+            .addField('Server Members :two_men_holding_hands: ', اعضاء)
+            .addField('Server Rooms :newspaper: ', الرومات)
+            .addField('Server Owner :crown: ', اونر)
+            .addField('Server Country :flags: ', بلدالسيرفر)
+            .addField('Server Opening date :alarm_clock: ', عمل)
             .setColor('#ff0000')
 
         message.channel.sendEmbed(server)
