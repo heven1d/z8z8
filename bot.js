@@ -408,7 +408,7 @@ client.on('message', message => {
             .addField('صاحب السيرفر', اونر)
             .addField('بلد السيرفر', بلدالسيرفر)
             .addField('تاريخ افتتاح السيرفر', عمل)
-            .setColor('RANDOM')
+            .setColor('#ff0000')
 
         message.channel.sendEmbed(server)
     }
