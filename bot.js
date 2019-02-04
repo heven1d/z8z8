@@ -550,19 +550,25 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-     if (message.content === "^bot") {
-            if(!message.channel.guild) return message.reply('** This command only for servers **');
-     let embed = new Discord.RichEmbed()
-  .setColor('#ff0000')
-  .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
-  .addField("** **")
-  .addField("**المستخدمين:**", client.users.size)
-  .addField("** **")
-  .addField("**قنوات:**", client.channels.size)
-  .addField("** **")
-  .setTimestamp()
-message.channel.sendEmbed(embed);
-    }
+    if (message.content.startsWith("^bot")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)//client.user.avatarURL
+            .setThumbnail(client.user.avatarURL)
+            .setColor('#ff0000')
+            .setTitle('**``My INFO``** ')
+            .addField('**My Owner**' , `<@460606140666085378>` , true)
+            .addField('**My Ping**' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('**RAM Usage**', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('**Servers**', [client.guilds.size], true)
+            .addField('**channels**' , `[ ${client.channels.size} ]` , true)
+            .addField('**Users**' ,`[ ${client.users.size} ]` , true)
+            .addField('**My Name**' , `[ ${client.user.tag} ]` , true)
+            .addField('**My ID**' , `[ ${client.user.id} ]` , true)
+            .addField('**My Prefix**' , `[^]` , true)
+            .addField('**My Language**' , `[ Java ]` , true)
+                    })
+}
 });
 
 
