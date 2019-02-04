@@ -94,7 +94,7 @@ client.on("message", message => {
 ❖ ^new (Subject) ➾ لفتح تـذكـرة
 ❖ ^close ➾ لإغـلاق تـذكـرة
 ❖ ^roles ➾ لإظهار رتب سيرفرك
-
+❖ ^role ➾ لإعطـاء شخص رتبة
 
 **
 `)
@@ -212,12 +212,12 @@ client.on("message", async message => {
       message.delete();
       var seg = new Discord.RichEmbed()
       .setAuthor(message.author.username, message.author.avatarURL)
-      .setDescription('`' + message + '`')
-      .setColor('#00cccc')
+      .setDescription('```' + message + '```')
+      .setColor('#ff0000')
       .setTimestamp()
      message.channel.sendEmbed(seg).then(function (message) {
-        message.react("505414189855277066")
-        message.react("505414170406158359")
+        message.react('❌')
+	message.react('✅')
      });
 
   }
@@ -336,7 +336,7 @@ client.on('message' , message => {
 
 
 client.on('message' , message => {
-  if(message.content.startsWith('12backup-chat-info')){
+  if(message.content.startsWith('12backup-info')){
          if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
         message.guild.createChannel('INFO Area', 'category').then(cg => {
         message.guild.createChannel('news', 'chat').then(cha => {
@@ -553,7 +553,7 @@ client.on('message', message => {
      if (message.content === "^bot") {
             if(!message.channel.guild) return message.reply('** This command only for servers **');
      let embed = new Discord.RichEmbed()
-  .setColor('RANDOM')
+  .setColor('#ff0000')
   .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
   .addField("**المستخدمين:**", client.users.size)
   .addField("**قنوات:**", client.channels.size)
@@ -570,6 +570,7 @@ client.on('message', message => {
     if(message.content == '^members') {
        message.react(":white_check_mark:")
     const embed = new Discord.RichEmbed()
+    .setColor('#ff0000')
     .setDescription(`**Members info🔋
 :green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
 :heart:dnd:       ${message.guild.members.filter(m=>m.presence.status == 'dnd').size}
@@ -682,7 +683,7 @@ client.on('message', message => {
               const Embed11 = new Discord.RichEmbed()
         .setColor("#FF0000")
 
-    .setDescription(" مدة الرابط : يوم | عدد استخدامات الرابط : 20 ")
+    .setDescription("** مدة الرابط : يوم و عدد استخدامات الرابط : 20 **")
       message.author.sendEmbed(Embed11)
     }
 });
@@ -722,11 +723,16 @@ message.channel.sendMessage(":heart_exclamation:  تم الإرسال فـ ال�
 
 client.on('message', message => {
      if (message.content === "هلوو") {
-message.channel.sendEmbed("tt" + ":heart: هلوو");
+message.channel.sendMessage(" " + ":heart: هلوو");
     }
 }); 
 
 
+client.on('message', message => {
+     if (message.content === "^notes") {
+message.channel.sendMessage("" + "Check your DM 📩.");
+    }
+});     
 
 
 
