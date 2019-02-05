@@ -440,7 +440,7 @@ client.on('message', async message => {
   // we ignore it
   if (!message.guild) return;
 
-  if (message.content === '/join') {
+  if (message.content === '^join') {
     // Only try to join the sender's voice channel if they are in one themselves
     if (message.member.voice.channel) {
       const connection = await message.member.voice.channel.join();
@@ -584,7 +584,7 @@ client.on('message', message => {
             .addField('**My Name**' , `[ ${client.user.tag} ]` , true)
             .addField('**My ID**' , `[ ${client.user.id} ]` , true)
             .addField('**My Prefix**' , `[^]` , true)
-            .addField('**My Language**' , `[ Java ]` , true)
+            .addField('**My Language**' , `[ Java Script ]` , true)
                     })
 }
 });
@@ -593,8 +593,12 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if(message.content == '^members') {
-       message.react(":white_check_mark:")
+    if (message.content === '^members') {
+if (message.guild == null) {
+message.channel.sendMessage("**Sorry, this command just in Guilds.**");
+return;
+}
+   message.react(":white_check_mark:")
     const embed = new Discord.RichEmbed()
     .setColor('#ff0000')
     .setDescription(`**Members info🔋
@@ -604,9 +608,8 @@ client.on('message', message => {
 :black_heart: offline:   ${message.guild.members.filter(m=>m.presence.status == 'offline').size}
 :blue_heart:   all:  ${message.guild.memberCount}**`)
          message.channel.send({embed});
-
     }
-  });
+});	
 
 
 
@@ -691,6 +694,10 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
+	if (message.guild == null) {
+message.channel.sendMessage("**Sorry, this command just in Guilds.**");
+return;
+}
         message.channel.createInvite({
         thing: true,
         maxUses: 20,
@@ -814,34 +821,6 @@ client.on('message', message => {
 });
 
 
-client.on('message', message => {
-      if(message.content.startsWith ("زواج")) {
-      if(!message.channel.guild) return message.reply('** This command only for servers **')
-      var proposed = message.mentions.members.first()
-     
-      if(!message.mentions.members.first()) return message.reply(' 😏 **لازم تطلب ايد وحدة**').catch(console.error);
-      if(message.mentions.users.size > 1) return message.reply(' 😳 **ولد ما يصحلك الا حرمة وحدة كل مرة**').catch(console.error);
-       if(proposed === message.author) return message.reply(`**خنثى ؟ **`);
-        if(proposed === client.user) return message.reply(`** تبي تتزوجني؟ **`);
-              message.channel.send(`**${proposed} 
- بدك تقبلي عرض الزواج من ${message.author} 
- العرض لمدة 15 ثانية  
- اكتبي موافقة او لا**`)
-
-const filter = m => m.content.startsWith("موافقة");
-message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-    message.channel.send(` **${message.author} و ${proposed} الف الف مبروك الله , يرزقكم الذرية الصالحة** `);
-})
-
-   const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-   message.channel.send(`  **${message.author} تم رفض عرضك** `);
-})
-        
-  }
-});
 
 
 client.on('message', message => {
