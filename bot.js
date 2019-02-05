@@ -207,6 +207,10 @@ client.on('message', message => {
 
 client.on('message', message => {
     if (message.content === '^roles') {
+if (message.guild == null) {
+message.channel.sendMessage("**Sorry, this command just in Guilds.**");
+return;
+}
         var roles = message.guild.roles.map(roles => `${roles.name} :military_medal: `).join(' ')
         const embed = new Discord.RichEmbed()
         .setColor('#ff0000')
@@ -214,6 +218,7 @@ client.on('message', message => {
         message.channel.sendEmbed(embed);
     }
 });
+	
 
 
 
