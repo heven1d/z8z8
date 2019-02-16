@@ -109,9 +109,26 @@ client.on("message", message => {
 ❖ ^roles ➾ لإظهار رتب سيرفرك
 ❖ ^role ➾ لإعطـاء شخص رتبة
 
+
+
+
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
+               ❖ Music Commands ❖ 
+ــــــــــــــــــــــــــــــــــــــــــــــــــ
 **
 `)
-
+      .addField("play [YouTube Link/Playlist]", "Usage: `^play` Description: To play See The YouTube Linke And playlist.", false)
+      .addField("play [Suchbegriff(e)]", "Usage: `^play`<song name> Description: To play Music.", false)
+      .addField("skip", "Usage: `^skip` Description: To skip music.", false)
+      .addField("stop", "Usage: `^stop` Description: To Bot disconnected.", false)
+      .addField("song", "Usage: `^song` Description: To Check The Current playing song.", false)
+      .addField("queue", "Usage: `^queue` Description: To Check The Queue List.", false)
+      .addField("volume", "Usage: `^volume` Description: To See Volume.", false)
+      .addField("volume [Wert]", "Usage: `^volume` Description: To Changes the volume level to the specified value.", false)
+      .addField("pause", "Usage: `^pause` Description: To pause The Current Playing Song.", false)
+      .addField("resume", "Usage: `^resume` Description: To Resume The Paused Song.", false)
+      .addField("mute", "Usage: `^mute` Description: To mute Bot.", false)
+      .addField("unmute", "Usage: `^unmute` Description: To unmute Bot.", false)
 
 message.author.sendEmbed(embed)
 
