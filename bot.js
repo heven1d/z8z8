@@ -52,7 +52,7 @@ client.on('message', message => {//Toxic Codes
   client.user.setActivity(argresult , {type:'LISTENING'});
       message.channel.send(`**✅   ${argresult}**`)//Toxic Codes
   } else 
-  if (message.content.startsWith('^sets')) {
+  if (message.content.startsWith('^set1s')) {
     client.user.setGame(argresult, "https://www.twitch.tv/zero");
       message.channel.send(`**✅**`)//Toxic Codes
   }
