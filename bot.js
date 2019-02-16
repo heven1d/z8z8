@@ -205,6 +205,25 @@ client.on('message', message => {
 
 
 
+
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var Huler = new Discord.RichEmbed()
+        .setColor('#ff0000')
+        .setTimestamp()
+        .setTitle('``! لقد تلقيت رساله جديدة في الخاص !``')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From ${message.author.tag} (${message.author.presence.status.toUpperCase()})`)
+    client.channels.get("546136155155070987").send({embed:Huler});
+    }
+});
+
+
+
+
+
 client.on('message', message => {
     if (message.content === '^roles') {
 if (message.guild == null) {
